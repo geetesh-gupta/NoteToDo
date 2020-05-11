@@ -23,6 +23,12 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         bindView()
+        checkLoginStatus()
+    }
+
+    private fun checkLoginStatus() {
+        StoreSession.init(this)
+        if (StoreSession.read(PrefConstant.IS_LOGGED_IN) == true) startToDoActivity(PrefConstant.FULL_NAME)
     }
 
     private fun bindView() {
