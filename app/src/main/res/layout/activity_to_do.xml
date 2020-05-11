@@ -7,6 +7,7 @@
     tools:context=".views.ToDoActivity">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/todoTopCardView"
         style="@style/TopCarView"
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -34,4 +35,25 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/todoAddNotesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_add"
+        android:backgroundTint="@color/colorAccent"
+        app:tint="@color/textColorSecondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/todoRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/todoTopCardView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
