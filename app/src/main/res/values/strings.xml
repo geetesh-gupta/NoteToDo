@@ -5,4 +5,7 @@
     <string name="login_password">Password</string>
     <string name="login_btn">Login</string>
     <string name="todo_header">Welcome</string>
+    <string name="add_notes_description">Description</string>
+    <string name="add_notes_title">Title</string>
+    <string name="add_notes_btn">Create</string>
 </resources>
