@@ -28,7 +28,11 @@ class LoginActivity : AppCompatActivity() {
 
     private fun checkLoginStatus() {
         StoreSession.init(this)
-        if (StoreSession.read(PrefConstant.IS_LOGGED_IN) == true) startToDoActivity(PrefConstant.FULL_NAME)
+        if (StoreSession.read(PrefConstant.IS_LOGGED_IN) == true) startToDoActivity(
+            StoreSession.readString(
+                PrefConstant.FULL_NAME
+            )!!
+        )
     }
 
     private fun bindView() {
