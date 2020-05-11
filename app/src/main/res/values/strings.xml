@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">NoteToDo</string>
+    <string name="login_username">Username</string>
+    <string name="login_name">Name</string>
+    <string name="login_password">Password</string>
+    <string name="login_btn">Login</string>
 </resources>
