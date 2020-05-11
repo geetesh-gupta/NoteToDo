@@ -1,5 +1,6 @@
 package com.gg.notetodo.views
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -33,12 +34,22 @@ class LoginActivity : AppCompatActivity() {
             val userName = editTextUsername.editText?.text.toString()
             val password = editTextPassword.editText?.text.toString()
             if (fullName.isNotEmpty() && userName.isNotEmpty() && password.isNotEmpty()) {
-                StoreSession.write(PrefConstant.FULL_NAME, fullName)
-                StoreSession.write(PrefConstant.USER_NAME, userName)
-                StoreSession.write(PrefConstant.PASSWORD, password)
-                StoreSession.write(PrefConstant.IS_LOGGED_IN, true)
+                storeLoginData(fullName, userName, password)
             }
         }
         buttonLogin.setOnClickListener(clickAction)
     }
+    private fun storeLoginData(
+        fullName: String,
+        userName: String,
+        password: String
+    ) {
+        StoreSession.init(this)
+        StoreSession.write(PrefConstant.FULL_NAME, fullName)
+        StoreSession.write(PrefConstant.USER_NAME, userName)
+        StoreSession.write(PrefConstant.PASSWORD, password)
+        StoreSession.write(PrefConstant.IS_LOGGED_IN, true)
+    }
+
+
 }
