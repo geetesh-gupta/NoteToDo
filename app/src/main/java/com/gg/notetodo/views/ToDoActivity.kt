@@ -33,15 +33,8 @@ class ToDoActivity : AppCompatActivity() {
         bindView()
         getIntentData()
         setHeader()
+        getDataFromDataBase()
         setupRecyclerView()
-        val note = Notes(
-            title = "Title",
-            description = "Description",
-            isTaskCompleted = false
-        )
-        addNotesToDb(note)
-        listNotes.add(note)
-        todoRecyclerViewNotes.adapter?.notifyItemChanged(listNotes.size - 1)
     }
 
     private fun bindView() {
@@ -56,10 +49,6 @@ class ToDoActivity : AppCompatActivity() {
         }
     }
 
-    private fun setHeader() {
-        todoHeader.text = "Welcome, $fullName"
-    }
-
     private fun getIntentData() {
         val intent = intent
         if (intent.hasExtra(AppConstant.FULL_NAME)) {
@@ -70,11 +59,16 @@ class ToDoActivity : AppCompatActivity() {
         }
     }
 
-    private fun addNotesToDb(notes: Notes) {
-        val todoApp = applicationContext as TodoApp
-        val notesDao = todoApp.getNotesDb().notesDao()
-        notesDao.insert(notes)
+    private fun setHeader() {
+        todoHeader.text = "Welcome, $fullName"
     }
+
+    private fun getDataFromDataBase() {
+        val notesApp = applicationContext as TodoApp
+        val notesDao = notesApp.getNotesDb().notesDao()
+        listNotes.addAll(notesDao.getAll())
+    }
+
 
     private fun setupRecyclerView() {
         val itemClickListener = object : ItemClickListener {
@@ -109,5 +103,11 @@ class ToDoActivity : AppCompatActivity() {
             listNotes.add(note)
             todoRecyclerViewNotes.adapter?.notifyItemChanged(listNotes.size - 1)
         }
+    }
+
+    private fun addNotesToDb(notes: Notes) {
+        val todoApp = applicationContext as TodoApp
+        val notesDao = todoApp.getNotesDb().notesDao()
+        notesDao.insert(notes)
     }
 }
