@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.gg.notetodo.R
+import com.gg.notetodo.util.AppConstant
 import com.gg.notetodo.util.PrefConstant
 import com.gg.notetodo.util.StoreSession
 import com.google.android.material.button.MaterialButton
@@ -21,7 +22,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         bindView()
-        StoreSession.init(this)
     }
 
     private fun bindView() {
@@ -35,10 +35,18 @@ class LoginActivity : AppCompatActivity() {
             val password = editTextPassword.editText?.text.toString()
             if (fullName.isNotEmpty() && userName.isNotEmpty() && password.isNotEmpty()) {
                 storeLoginData(fullName, userName, password)
+                startToDoActivity(fullName)
             }
         }
         buttonLogin.setOnClickListener(clickAction)
     }
+
+    private fun startToDoActivity(fullName: String) {
+        val intent = Intent(this@LoginActivity, ToDoActivity::class.java)
+        intent.putExtra(AppConstant.FULL_NAME, fullName)
+        startActivity(intent)
+    }
+
     private fun storeLoginData(
         fullName: String,
         userName: String,
