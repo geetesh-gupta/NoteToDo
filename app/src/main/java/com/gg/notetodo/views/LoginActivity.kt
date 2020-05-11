@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.gg.notetodo.R
 import com.gg.notetodo.util.AppConstant
 import com.gg.notetodo.util.PrefConstant
@@ -36,6 +37,10 @@ class LoginActivity : AppCompatActivity() {
             if (fullName.isNotEmpty() && userName.isNotEmpty() && password.isNotEmpty()) {
                 storeLoginData(fullName, userName, password)
                 startToDoActivity(fullName)
+            } else {
+                Toast
+                    .makeText(this, "Please enter all the fields", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
         buttonLogin.setOnClickListener(clickAction)
@@ -58,6 +63,4 @@ class LoginActivity : AppCompatActivity() {
         StoreSession.write(PrefConstant.PASSWORD, password)
         StoreSession.write(PrefConstant.IS_LOGGED_IN, true)
     }
-
-
 }
