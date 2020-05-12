@@ -36,7 +36,6 @@ class AddNotesActivity : AppCompatActivity() {
     private val REQUEST_CODE_CAMERA = 1
     private val REQUEST_CODE_GALLERY = 2
     private var picturePath = ""
-    lateinit var addImageDialog: AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,7 +74,7 @@ class AddNotesActivity : AppCompatActivity() {
             LayoutInflater.from(this@AddNotesActivity).inflate(R.layout.dialog_selector, null)
         val buttonCamera = view.findViewById<MaterialButton>(R.id.buttonCamera)
         val buttonGallery = view.findViewById<MaterialButton>(R.id.buttonGallery)
-        addImageDialog = AlertDialog.Builder(this)
+        val addImageDialog = AlertDialog.Builder(this)
             .setView(view)
             .setCancelable(true)
             .create()
@@ -100,7 +99,8 @@ class AddNotesActivity : AppCompatActivity() {
                     startActivityForResult(takePictureIntent, REQUEST_CODE_CAMERA)
                 }
             }
-            addImageDialog.hide()
+//            addImageDialog.hide()
+            addImageDialog.dismiss()
         }
         buttonGallery.setOnClickListener {
             val intent = Intent(
@@ -108,7 +108,8 @@ class AddNotesActivity : AppCompatActivity() {
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
             )
             startActivityForResult(intent, REQUEST_CODE_GALLERY)
-            addImageDialog.hide()
+//            addImageDialog.hide()
+            addImageDialog.dismiss()
         }
         addImageDialog.show()
     }
@@ -185,9 +186,5 @@ class AddNotesActivity : AppCompatActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        addImageDialog.dismiss()
-    }
 }
 
