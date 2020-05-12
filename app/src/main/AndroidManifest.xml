@@ -20,6 +20,7 @@
         <activity android:name=".views.AddNotesActivity" />
         <activity android:name=".views.ToDoActivity" />
         <activity android:name=".views.LoginActivity"/>
+        <activity android:name=".onboarding.OnBoardingActivity" />
     </application>
 
 </manifest>

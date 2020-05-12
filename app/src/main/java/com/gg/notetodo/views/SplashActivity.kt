@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.gg.notetodo.R
+import com.gg.notetodo.onboarding.OnBoardingActivity
 import com.gg.notetodo.util.PrefConstant
 import com.gg.notetodo.util.StoreSession
 
@@ -25,13 +26,13 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(this@SplashActivity, ToDoActivity::class.java)
             startActivity(intent)
         } else {
-//            if (isBoardingSuccess!!) {
+            if (isBoardingSuccess!!) {
                 val intent = Intent(this@SplashActivity, LoginActivity::class.java)
                 startActivity(intent)
-//            } else {
-//                val intent = Intent(this@SplashActivity, OnBoardingActivity::class.java)
-//                startActivity(intent)
-//            }
+            } else {
+                val intent = Intent(this@SplashActivity, OnBoardingActivity::class.java)
+                startActivity(intent)
+            }
         }
         finish()
     }
