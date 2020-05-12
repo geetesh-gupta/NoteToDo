@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccentAlternate"
+    android:background="@color/colorAccent"
     tools:context=".onboarding.OnBoardingOneFragment">
 
     <com.google.android.material.textview.MaterialTextView
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="Choose Image in your todos"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/textColorSecondary"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,34 +36,33 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:text="Choose Images either from Camera or Your gallery"
-        android:textColor="@color/textColorSecondary"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textViewDone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="Done"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/textColorSecondary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <com.google.android.material.textview.MaterialTextView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/textViewBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="Back"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/textColorSecondary"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/textViewDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="64dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="Get Started"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 </com.jem.liquidswipe.layout.LiquidSwipeConstraintLayout>
 
