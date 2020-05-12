@@ -9,7 +9,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
-        <item name="tint">@color/colorAccent</item>
+<!--        <item name="tint">@color/colorAccent</item>-->
     </style>
 
     <style name="TopCarView" parent="@style/Widget.MaterialComponents.CardView">
