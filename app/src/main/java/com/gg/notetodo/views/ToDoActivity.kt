@@ -95,12 +95,15 @@ class ToDoActivity : AppCompatActivity() {
         if (requestCode == ADD_NOTES_CODE && resultCode == Activity.RESULT_OK) {
             val title = data?.getStringExtra(AppConstant.TITLE);
             val description = data?.getStringExtra(AppConstant.DESCRIPTION)
+            val imagePath = data?.getStringExtra(AppConstant.IMAGE_PATH)
 
             val note = Notes(
                 title = title!!,
                 description = description!!,
+                imagePath = imagePath!!,
                 isTaskCompleted = false
             )
+
             addNotesToDb(note)
             listNotes.add(note)
             todoRecyclerViewNotes.adapter?.notifyItemChanged(listNotes.size - 1)

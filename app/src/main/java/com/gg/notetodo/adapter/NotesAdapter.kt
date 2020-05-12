@@ -4,8 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.gg.notetodo.R
 import com.gg.notetodo.clicklisteners.ItemClickListener
 import com.gg.notetodo.db.Notes
@@ -28,6 +30,7 @@ class NotesAdapter(
         holder.textViewTitle.text = title
         holder.textViewDescription.text = description
         holder.checkBoxMarkStatus.isChecked = notes.isTaskCompleted
+        Glide.with(holder.itemView).load(notes.imagePath).into(holder.imageView)
         holder.itemView.setOnClickListener { itemClickListener.onClick(notes) }
         holder.checkBoxMarkStatus.setOnCheckedChangeListener { _, isChecked ->
             notes.isTaskCompleted = isChecked
@@ -43,6 +46,7 @@ class NotesAdapter(
         var textViewTitle: TextView = itemView.findViewById(R.id.notesAdapterTitle)
         var textViewDescription: TextView = itemView.findViewById(R.id.notesAdapterDescription)
         var checkBoxMarkStatus: CheckBox = itemView.findViewById(R.id.notesAdapterCheckbox)
+        var imageView: ImageView = itemView.findViewById(R.id.notesAdapterImageView)
     }
 
     override fun getItemId(position: Int): Long {

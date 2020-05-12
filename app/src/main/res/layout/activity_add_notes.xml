@@ -45,6 +45,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
+        <ImageView
+            android:id="@+id/addNotesImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_picture"
+            android:contentDescription="Add Image" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/addNotesCreateButton"
             android:layout_width="wrap_content"
