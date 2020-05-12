@@ -82,10 +82,12 @@ class ToDoActivity : AppCompatActivity() {
             }
         }
         val notesAdapter = NotesAdapter(listNotes, itemClickListener)
+        notesAdapter.setHasStableIds(true)
         val linearLayoutManager = LinearLayoutManager(this)
         linearLayoutManager.orientation = RecyclerView.VERTICAL
         todoRecyclerViewNotes.layoutManager = linearLayoutManager
         todoRecyclerViewNotes.adapter = notesAdapter
+        todoRecyclerViewNotes.setItemViewCacheSize(20)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -45,4 +45,7 @@ class NotesAdapter(
         var checkBoxMarkStatus: CheckBox = itemView.findViewById(R.id.notesAdapterCheckbox)
     }
 
+    override fun getItemId(position: Int): Long {
+        return list[position].id.hashCode().toLong()
+    }
 }
