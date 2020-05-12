@@ -4,8 +4,13 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.gg.notetodo.R
 import com.gg.notetodo.TodoApp
 import com.gg.notetodo.adapter.NotesAdapter
@@ -14,7 +19,9 @@ import com.gg.notetodo.db.Notes
 import com.gg.notetodo.util.AppConstant
 import com.gg.notetodo.util.PrefConstant
 import com.gg.notetodo.util.StoreSession
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
 import java.util.ArrayList
 
@@ -79,6 +86,23 @@ class ToDoActivity : AppCompatActivity() {
             }
 
             override fun onClick(notes: Notes) {
+                val view =
+                    LayoutInflater.from(this@ToDoActivity).inflate(R.layout.dialog_todo_note, null)
+                val title = view.findViewById<TextView>(R.id.todoNoteTitle)
+                val description = view.findViewById<TextView>(R.id.todoNoteDescription)
+                val imageView = view.findViewById<ImageView>(R.id.todoNoteImageView)
+                val buttonDone = view.findViewById<MaterialButton>(R.id.todoNoteDoneButton)
+                title.text = notes.title
+                description.text = notes.description
+                Glide.with(this@ToDoActivity).load(notes.imagePath).into(imageView)
+                val dialog = AlertDialog.Builder(this@ToDoActivity)
+                    .setView(view)
+                    .setCancelable(true)
+                    .create()
+                buttonDone.setOnClickListener {
+                    dialog.dismiss()
+                }
+                dialog.show()
             }
         }
         val notesAdapter = NotesAdapter(listNotes, itemClickListener)
