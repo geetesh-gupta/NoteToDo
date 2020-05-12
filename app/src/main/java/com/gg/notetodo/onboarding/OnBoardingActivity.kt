@@ -1,8 +1,6 @@
 package com.gg.notetodo.onboarding
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
@@ -15,19 +13,11 @@ class OnBoardingActivity : AppCompatActivity(), OnBoardingOneFragment.OnNextClic
     OnBoardingTwoFragment.OnOptionClick {
 
     private lateinit var viewPager: ViewPager
-    private lateinit var sharedPreferences: SharedPreferences
-    lateinit var editor: SharedPreferences.Editor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_on_boarding)
         bindView()
-        setupSharedPreference()
-    }
-
-    private fun setupSharedPreference() {
-        sharedPreferences =
-            getSharedPreferences(PrefConstant.SHARED_PREFERENCE_NAME, Context.MODE_PRIVATE)
     }
 
     fun bindView() {
@@ -45,7 +35,7 @@ class OnBoardingActivity : AppCompatActivity(), OnBoardingOneFragment.OnNextClic
     }
 
     override fun onOptionDone() {
-        //2nd fragment
+        // 2nd fragment
         StoreSession.init(this)
         StoreSession.write(PrefConstant.ON_BOARDED_SUCCESSFUL, true)
 
