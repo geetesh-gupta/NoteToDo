@@ -6,8 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".onboarding.OnBoardingActivity">
 
-    <androidx.viewpager.widget.ViewPager
+
+    <com.jem.liquidswipe.LiquidSwipeViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
