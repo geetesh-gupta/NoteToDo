@@ -16,7 +16,6 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var editTextName: TextInputLayout
     private lateinit var editTextUsername: TextInputLayout
-    private lateinit var editTextPassword: TextInputLayout
     lateinit var buttonLogin: MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,14 +37,12 @@ class LoginActivity : AppCompatActivity() {
     private fun bindView() {
         editTextName = findViewById(R.id.loginName)
         editTextUsername = findViewById(R.id.loginUsername)
-        editTextPassword = findViewById(R.id.loginPassword)
         buttonLogin = findViewById(R.id.loginButton)
         val clickAction = View.OnClickListener {
             val fullName = editTextName.editText?.text.toString()
             val userName = editTextUsername.editText?.text.toString()
-            val password = editTextPassword.editText?.text.toString()
-            if (fullName.isNotEmpty() && userName.isNotEmpty() && password.isNotEmpty()) {
-                storeLoginData(fullName, userName, password)
+            if (fullName.isNotEmpty() && userName.isNotEmpty()) {
+                storeLoginData(fullName, userName)
                 startToDoActivity(fullName)
             } else {
                 Toast
@@ -64,13 +61,11 @@ class LoginActivity : AppCompatActivity() {
 
     private fun storeLoginData(
         fullName: String,
-        userName: String,
-        password: String
+        userName: String
     ) {
         StoreSession.init(this)
         StoreSession.write(PrefConstant.FULL_NAME, fullName)
         StoreSession.write(PrefConstant.USER_NAME, userName)
-        StoreSession.write(PrefConstant.PASSWORD, password)
         StoreSession.write(PrefConstant.IS_LOGGED_IN, true)
     }
 }
